@@ -1,3 +1,5 @@
+// eslint-disable-next-line no-unused-vars
+import * as React from 'react'
 import { useState, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import OrderDetail from './OrderDetail'
@@ -42,7 +44,12 @@ function Order() {
         <>
             <Navigation />
             <OrderDetail books={books} setQuantity={setQuantity} />
-            <button className="ButtonReady" type="button" onClick={handleReady}>
+            <button
+                data-testid="button-ready"
+                className="ButtonReady"
+                type="button"
+                onClick={handleReady}
+            >
                 Ready
             </button>
         </>
