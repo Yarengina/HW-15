@@ -2,26 +2,17 @@
 import * as React from 'react'
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import '@testing-library/jest-dom/extend-expect'
-import { MemoryRouter } from 'react-router-dom'
+import renderWithRouter from '../utils/renderWithRouter'
 import UserOrder from '../../pages/UserOrder/UserOrder'
 
 describe('<UserOrder />', () => {
     it('should render successfully and match snapshot', () => {
-        const { container } = render(
-            <MemoryRouter>
-                <UserOrder />
-            </MemoryRouter>
-        )
+        const { container } = render(renderWithRouter(<UserOrder />))
         expect(container).toMatchSnapshot()
     })
 
     it('should be able to type a phone', () => {
-        render(
-            <MemoryRouter>
-                <UserOrder />
-            </MemoryRouter>
-        )
+        render(renderWithRouter(<UserOrder />))
         const inputPhone = screen.getByRole('textbox', { name: /phone:/i })
         expect(inputPhone.value).toBe('')
 
@@ -30,11 +21,7 @@ describe('<UserOrder />', () => {
     })
 
     it('should be able to type only numbers', () => {
-        render(
-            <MemoryRouter>
-                <UserOrder />
-            </MemoryRouter>
-        )
+        render(renderWithRouter(<UserOrder />))
         const inputPhone = screen.getByRole('textbox', { name: /phone:/i })
         userEvent.type(inputPhone, 'user')
         expect(inputPhone.value).toBe('')
