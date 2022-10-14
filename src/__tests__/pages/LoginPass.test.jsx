@@ -1,18 +1,19 @@
 // eslint-disable-next-line no-unused-vars
 import * as React from 'react'
-import { render, screen } from '@testing-library/react'
+import '@testing-library/jest-dom/extend-expect'
+import { screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import renderWithRouter from '../utils/renderWithRouter'
+import { render } from '../utils/renderWithRouter'
 import LoginPass from '../../pages/LoginPass/LoginPass'
 
 describe('<LoginPass />', () => {
     it('should render successfully and match snapshot', () => {
-        const { container } = render(renderWithRouter(<LoginPass />))
+        const { container } = render(<LoginPass />)
         expect(container).toMatchSnapshot()
     })
 
     it('should test initially empty inputs', () => {
-        render(renderWithRouter(<LoginPass />))
+        render(<LoginPass />)
         const inputEmail = screen.getByPlaceholderText(/enter your email.../i)
         const inputPassword = screen.getByPlaceholderText(
             /enter your password.../i
@@ -23,14 +24,14 @@ describe('<LoginPass />', () => {
     })
 
     it('should be able to type an email', () => {
-        render(renderWithRouter(<LoginPass />))
+        render(<LoginPass />)
         const inputEmail = screen.getByPlaceholderText(/enter your email.../i)
         userEvent.type(inputEmail, 'user@gmail.com')
         expect(inputEmail.value).toBe('user@gmail.com')
     })
 
     it('should be able to type a password', () => {
-        render(renderWithRouter(<LoginPass />))
+        render(<LoginPass />)
         const inputPassword = screen.getByPlaceholderText(
             /enter your password.../i
         )
@@ -39,7 +40,7 @@ describe('<LoginPass />', () => {
     })
 
     it('should show email error message on invalid email', () => {
-        render(renderWithRouter(<LoginPass />))
+        render(<LoginPass />)
         const inputEmail = screen.getByPlaceholderText(/enter your email.../i)
         userEvent.type(inputEmail, 'usergmail.com')
 
@@ -51,7 +52,7 @@ describe('<LoginPass />', () => {
     })
 
     it('should show password error message on invalid password', () => {
-        render(renderWithRouter(<LoginPass />))
+        render(<LoginPass />)
         const inputPassword = screen.getByPlaceholderText(
             /enter your password.../i
         )

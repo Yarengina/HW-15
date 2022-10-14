@@ -1,7 +1,8 @@
 // eslint-disable-next-line no-unused-vars
 import * as React from 'react'
-import { render, screen } from '@testing-library/react'
-import renderWithRouter from '../utils/renderWithRouter'
+import '@testing-library/jest-dom/extend-expect'
+import { screen } from '@testing-library/react'
+import { render } from '../utils/renderWithRouter'
 import OrderDetail from '../../pages/Order/OrderDetail'
 
 describe('<OrderDetail />', () => {
@@ -18,7 +19,7 @@ describe('<OrderDetail />', () => {
     ]
 
     it('should render book detail with id 101', () => {
-        render(renderWithRouter(<OrderDetail books={books} />))
+        render(<OrderDetail books={books} />)
         const bookElement = screen.getByTestId('todo-101')
         expect(bookElement).toBeInTheDocument()
         expect(bookElement).toHaveTextContent('Война и мир - Л.Н.Толстой')
@@ -27,9 +28,7 @@ describe('<OrderDetail />', () => {
     })
 
     it('should render successfully and match snapshot', () => {
-        const { container } = render(
-            renderWithRouter(<OrderDetail books={books} />)
-        )
+        const { container } = render(<OrderDetail books={books} />)
         expect(container).toMatchSnapshot()
     })
 })
