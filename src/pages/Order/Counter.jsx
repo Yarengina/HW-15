@@ -1,3 +1,6 @@
+// eslint-disable-next-line no-unused-vars
+import * as React from 'react'
+
 function Counter({ min, max, current, onChange }) {
     function applyCurrent(num) {
         const validNum = Math.max(min, Math.min(max, num))

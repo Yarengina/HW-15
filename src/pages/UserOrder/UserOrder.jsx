@@ -1,3 +1,5 @@
+// eslint-disable-next-line no-unused-vars
+import * as React from 'react'
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import { useRef, useContext, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
@@ -41,7 +43,7 @@ function UserOrder() {
             <h1>Input data</h1>
             <div className="UserInputs">
                 <label htmlFor="usermail">Email: </label>
-                <input
+                <input data-testid='usermail'
                     className="UserInput"
                     id="usermail"
                     type="email"
@@ -51,7 +53,7 @@ function UserOrder() {
             </div>
             <div className="UserInputs">
                 <label htmlFor="userphone">Phone: </label>
-                <input
+                <input data-testid='userphone'
                     className="UserInput"
                     id="userphone"
                     type="tel"

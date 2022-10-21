@@ -1,3 +1,5 @@
+// eslint-disable-next-line no-unused-vars
+import * as React from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import booksStub from '../../components/booksStub'
 import './BookDesc.css'
@@ -5,7 +7,7 @@ import './BookDesc.css'
 function BookDesc() {
     const { bookId } = useParams()
 
-    const searcBook = booksStub().find((book) => book.id === Number(bookId))
+    const searchBook = booksStub().find((book) => book.id === Number(bookId))
 
     const navigate = useNavigate()
 
@@ -16,15 +18,15 @@ function BookDesc() {
     return (
         <div className="BookDesc">
             <p>
-                Книга: <strong>{searcBook.title}</strong>
+                Книга: <strong>{searchBook.title}</strong>
             </p>
             <p className="Description">
                 Описание:
                 <br />
-                <strong>{searcBook.description}</strong>
+                <strong>{searchBook.description}</strong>
             </p>
             <p>
-                Цена: <strong>{searcBook.price} руб.</strong>
+                Цена: <strong>{searchBook.price} руб.</strong>
             </p>
             <button className="ButtonBack" type="button" onClick={goBack}>
                 Back
